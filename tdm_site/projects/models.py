@@ -9,6 +9,7 @@ class Project(models.Model):
     """
     Model for a project.
     """
+    project_pdf = models.FileField(upload_to='project_pdfs/', blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
