@@ -1,0 +1,48 @@
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
+from rest_framework.response import Response
+from rest_framework.viewsets import GenericViewSet
+from rest_framework import generics
+from tdm_site.projects.models import Project
+
+from .serializers import ProjectSerializer
+
+
+class ProjectViewSet(ListModelMixin, GenericViewSet):
+    serializer_class = ProjectSerializer
+    queryset = Project.objects.all()
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned projects by filtering against
+        a variety of form fields.
+        """
+        queryset = Project.objects.all()
+        year = self.request.query_params.get('year')
+        domain = self.request.query_params.get('domain')
+        cstatus = self.request.query_params.get('cstatus')
+
+        keywords = self.request.query_params.get('keywords')
+        tools = self.request.query_params.get('tools')
+        classtimes = self.request.query_params.get('classtimes')
+
+        if year is not None:
+            queryset = queryset.filter(year=year)
+
+        if domain is not None:
+            queryset = queryset.filter(domain=domain)
+
+        if cstatus is not None:
+            queryset = queryset.filter(cstatus=cstatus)
+
+        if keywords is not None:
+            queryset = queryset.filter(keywords__in=keywords)
+
+        if tools is not None:
+            queryset = queryset.filter(tools__in=tools)
+
+        if classtimes is not None:
+            queryset = queryset.filter(classtimes__in=classtimes)
+
+        return queryset
