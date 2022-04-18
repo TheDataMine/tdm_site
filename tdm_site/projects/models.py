@@ -57,6 +57,10 @@ class Project(models.Model):
         return self.title
 
 
+    class Meta:
+        ordering = ["-updated_at"]
+
+
 class CitizenshipStatus(models.Model):
     """
     Model for a citizenship status.

@@ -39,7 +39,7 @@ def project_search_result_view(request):
     queryset = Project.objects.all()
     year = request.GET.get('year')
     domain = request.GET.get('domain')
-    cstatus = request.GET.get('citizenship_status')
+    citizenship_status = request.GET.get('citizenship_status')
 
     keywords = request.GET.get('keywords')
     tools = request.GET.get('tools')
@@ -51,8 +51,8 @@ def project_search_result_view(request):
     if domain not in ['', None]:
         queryset = queryset.filter(domain=domain)
 
-    if cstatus not in ['', None]:
-        queryset = queryset.filter(cstatus=cstatus)
+    if citizenship_status not in ['', None]:
+        queryset = queryset.filter(citizenship_status=citizenship_status)
 
     if keywords not in ['', None]:
         queryset = queryset.filter(keywords__in=keywords)

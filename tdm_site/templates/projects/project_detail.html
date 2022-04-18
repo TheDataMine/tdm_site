@@ -5,20 +5,41 @@
 
 {% block content %}
 <div class="container">
-
-  <div class="row">
-    <div class="col-sm-12">
-
-      <h2>Title: {{ object.title }}</h2>
-      <p>Keywords: {% for keyword in object.keywords.all %} {{ keyword.keyword }} {% endfor %}</p>
-      <p>Tools: {% for tool in object.tools.all %} {{ tool.name }} {% endfor %}</p>
-      <p>Domain: {{ object.domain }}</p>
-      <p>Summary: {{ object.summary }}</p>
-      <p>Description: {{ object.description }}</p>
-      <iframe height="100%" width="100%" src="{{ object.project_pdf.url }}">
-
+    <div class="row justify-content-center">
+	<div class="col-6">
+	<div class="card mb-3">
+		<div class="card-body">
+			<a href="{{ object.get_absolute_url }}" class="text-decoration-none"><h5 class="card-title">{{ object.company }} - {{ object.title }}</h5></a>
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item"><b>Class time:</b> {{ object.classtimes.all|join:", " }}</li>
+			<li class="list-group-item"><b>Domain:</b> {{ object.domain }}</li>
+			<li class="list-group-item"><b>Keywords:</b> {{ object.keywords.all|join:", " }}</li>
+			<li class="list-group-item"><b>Tools:</b> {{ object.tools.all|join:", " }}</li>
+  		</ul>
+		<div class="card-body">
+			<h6 class="card-text">Summary</h6>
+			<p class="card-text">{{ object.summary }}</p>
+            <h6 class="card-text">Description</h6>
+            <p class="card-text">{{ object.description }}</p>
+		</div>
+            <div class="card-footer">
+                <div class="row">
+                    <small class="text-muted col-sm-6 text-start">AY {{ object.year }} - {{ object.year|add:"1" }}</small>
+			        <small class="text-muted col-sm-6 text-end">Last updated: {{ object.updated_at }}</small>
+                </div>
+            </div>
+	</div>
+        
+	</div>
+    <div class="col-10">
     </div>
-  </div>
+    <div class="col-10">
+        <iframe height="100%" width="100%" src="{{ object.project_pdf.url }}">
+    </div>
+</div>
+
+
 
 {% if object == request.user %}
 <!-- Action buttons -->

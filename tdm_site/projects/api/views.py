@@ -21,7 +21,7 @@ class ProjectViewSet(ListModelMixin, GenericViewSet):
         queryset = Project.objects.all()
         year = self.request.query_params.get('year')
         domain = self.request.query_params.get('domain')
-        cstatus = self.request.query_params.get('cstatus')
+        citizenship_status = self.request.query_params.get('citizenship_status')
 
         keywords = self.request.query_params.get('keywords')
         tools = self.request.query_params.get('tools')
@@ -33,8 +33,8 @@ class ProjectViewSet(ListModelMixin, GenericViewSet):
         if domain is not None:
             queryset = queryset.filter(domain=domain)
 
-        if cstatus is not None:
-            queryset = queryset.filter(cstatus=cstatus)
+        if citizenship_status is not None:
+            queryset = queryset.filter(citizenship_status=citizenship_status)
 
         if keywords is not None:
             queryset = queryset.filter(keywords__in=keywords)
