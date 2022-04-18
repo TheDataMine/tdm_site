@@ -34,9 +34,11 @@
 	</div>
     <div class="col-10">
     </div>
+    {% if object.project_pdf %}
     <div class="col-10">
         <iframe height="792px" width="100%" src="{{ object.project_pdf.url }}">
     </div>
+    {% endif %}
 </div>
 
 
