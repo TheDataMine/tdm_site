@@ -33,3 +33,6 @@ class Keyword(models.Model):
 
     def __str__(self):
         return self.keyword
+
+    class Meta:
+        ordering = ["keyword",]
