@@ -41,9 +41,9 @@ def project_search_result_view(request):
     domain = request.GET.get('domain')
     citizenship_status = request.GET.get('citizenship_status')
 
-    keywords = request.GET.get('keywords')
-    tools = request.GET.get('tools')
-    classtimes = request.GET.get('classtimes')
+    keywords = request.GET.getlist('keywords')
+    tools = request.GET.getlist('tools')
+    classtimes = request.GET.getlist('classtimes')
 
     if year not in ['', None]:
         queryset = queryset.filter(year=year)
@@ -54,13 +54,13 @@ def project_search_result_view(request):
     if citizenship_status not in ['', None]:
         queryset = queryset.filter(citizenship_status=citizenship_status)
 
-    if keywords not in ['', None]:
+    if keywords:
         queryset = queryset.filter(keywords__in=keywords)
 
-    if tools not in ['', None]:
+    if tools:
         queryset = queryset.filter(tools__in=tools)
 
-    if classtimes not in ['', None]:
+    if classtimes:
         queryset = queryset.filter(classtimes__in=classtimes)
 
     return render(request, 'projects/project_list.html', context={'project_list': queryset})
