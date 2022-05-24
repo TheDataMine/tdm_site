@@ -43,7 +43,7 @@ def project_search_result_view(request):
 
     keywords = request.GET.getlist('keywords')
     tools = request.GET.getlist('tools')
-    class_times = request.GET.getlist('class_times')
+    lab_times = request.GET.getlist('lab_times')
 
     if year not in ['', None]:
         queryset = queryset.filter(year=year)
@@ -60,8 +60,8 @@ def project_search_result_view(request):
     if tools:
         queryset = queryset.filter(tools__in=tools)
 
-    if class_times:
-        queryset = queryset.filter(classtimes__in=class_times)
+    if lab_times:
+        queryset = queryset.filter(labtimes__in=lab_times)
 
     return render(request, 'projects/project_list.html', context={'project_list': queryset})
 

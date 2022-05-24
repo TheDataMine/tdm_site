@@ -5,7 +5,7 @@ from tdm_site.projects.models import Project
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ["year", "title", "domain", "keywords", "tools", "citizenship_status", "classtimes", "summary", "description",]
+        fields = ["year", "title", "domain", "keywords", "tools", "citizenship_status", "labtimes", "lecturetimes", "summary", "description",]
 
         extra_kwargs = {
             "url": {"view_name": "api:project-detail", "lookup_field": "title"}

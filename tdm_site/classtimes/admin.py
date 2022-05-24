@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import Classtime
+from .models import Labtime, Lecturetime
 
-class ClasstimeAdmin(admin.ModelAdmin):
+class LabtimeAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Classtime, ClasstimeAdmin)
+class LecturetimeAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Labtime, LabtimeAdmin)
+admin.site.register(Lecturetime, LecturetimeAdmin)

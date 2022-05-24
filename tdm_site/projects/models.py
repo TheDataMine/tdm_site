@@ -22,7 +22,8 @@ class Project(models.Model):
     description = TextField(_('description'), max_length=1000)
     year = IntegerField(_('year'), blank=False)
 
-    classtimes = ManyToManyField("classtimes.Classtime", verbose_name=_("classtimes"))
+    labtimes = ManyToManyField("classtimes.Labtime", verbose_name=_("labtimes"))
+    lecturetimes = ManyToManyField("classtimes.Lecturetime", verbose_name=_("lecturetimes"))
 
     tools = ManyToManyField("tools.Tool", verbose_name=_("tools"))
     keywords = ManyToManyField("keywords.Keyword", verbose_name=_("keywords"))

@@ -25,7 +25,8 @@ class ProjectViewSet(ListModelMixin, GenericViewSet):
 
         keywords = self.request.query_params.get('keywords')
         tools = self.request.query_params.get('tools')
-        classtimes = self.request.query_params.get('classtimes')
+        labtimes = self.request.query_params.get('labtimes')
+        lecturetimes = self.request.query_params.get('lecturetimes')
 
         if year is not None:
             queryset = queryset.filter(year=year)
@@ -42,7 +43,10 @@ class ProjectViewSet(ListModelMixin, GenericViewSet):
         if tools is not None:
             queryset = queryset.filter(tools__in=tools)
 
-        if classtimes is not None:
-            queryset = queryset.filter(classtimes__in=classtimes)
+        if labtimes is not None:
+            queryset = queryset.filter(labtimes__in=labtimes)
+
+        if lecturetimes is not None:
+            queryset = queryset.filter(lecturetimes__in=lecturetimes)
 
         return queryset
