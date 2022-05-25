@@ -24,7 +24,7 @@ project_detail_view = ProjectDetailView.as_view()
 class ProjectListView(ListView):
     
     model = Project
-    paginate_by = 25
+    paginate_by = 10
 
 project_list_view = ProjectListView.as_view()
 
