@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView, ListView, FormView
 from rest_framework.views import APIView
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
 from tdm_site.projects.models import Project
 
