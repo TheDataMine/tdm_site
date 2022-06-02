@@ -67,5 +67,9 @@ def project_search_result_view(request):
     if lecture_times:
         queryset = queryset.filter(lecturetimes__in=lecture_times)
 
-    return render(request, 'projects/project_list.html', context={'project_list': queryset})
+    paginator = Paginator(queryset, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'projects/project_list.html', context={'page_obj': page_obj})
 

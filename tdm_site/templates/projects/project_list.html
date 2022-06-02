@@ -15,6 +15,7 @@
 			<li class="list-group-item"><b>Domain:</b> {{ project.domain }}</li>
 			<li class="list-group-item"><b>Keywords:</b> {{ project.keywords.all|join:", " }}</li>
 			<li class="list-group-item"><b>Tools:</b> {{ project.tools.all|join:", " }}</li>
+			<li class="list-group-item"><b>Citizenship:</b> {{ project.citizenship_status }}</li>
   		</ul>
 		<div class="card-body">
 			<h6 class="card-text">Summary</h6>
@@ -45,7 +46,7 @@
 		</li>
 		{% endif %}
 
-		<li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+		<li class="page-item"><a class="page-link" href="#">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</a></li>
 
 		{% if page_obj.has_next %}
 		<li class="page-item">
