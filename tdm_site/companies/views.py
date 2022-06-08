@@ -19,7 +19,6 @@ company_detail_view = CompanyDetailView.as_view()
 class CompanyListView(ListView):
     
     model = Company
-    paginate_by = 25
 
 
 company_list_view = CompanyListView.as_view()
