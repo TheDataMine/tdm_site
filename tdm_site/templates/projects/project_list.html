@@ -2,20 +2,56 @@
 {% load static %}
 
 {% block content %}
+<style>
+	@media only screen and (max-width: 768px) {
+	  #sticky-sidebar {
+		  display: none;
+	  }
+	  .col-6 {
+		  width: 99%;
+		  max-width: 100%;
+		  flex: 0 0 100%;
+	  }
+  }
+	  @media only screen and (min-width: 769px){
+	  #directions {
+		  display: none;
+	  }
+	  .col-6 {
+		  width: 65%;
+		  max-width: 65%;
+		  flex: 0 0 100%;
+	  }
+  }
+	  @media only screen and (min-width: 1500px){
+	  .col-6 {
+		  width: 50%;
+		  max-width: 50%;
+		  flex: 0 0 100%;
+	  }
+  }
+</style>
 <div class="container-fluid">
-	<div class ='row container-fluid'>
-		<div style='top:75px; position:fixed; border-style: solid; width: 500px;'>
-			<div style="padding: 10px;">
+	<div class="row ">
+		<div class="col-3" id="sticky-sidebar">
+			<div class="sticky-top" style='border-style: solid; padding: 10px;'>
 				<h3>Directions</h1>
-					<p>Use the <a href="https://projects.the-examples-book.com/companies/">Companies</a> tab to view all projects by company</p>
-					<p>Use the <a href="https://projects.the-examples-book.com/projects/search">Search</a> tab to search for projects by domain, keywords, and meeting time</p>
-					<br>
-					<p><b>Click on individual projects to view more information including project descriptions from corporate partners</b></p>
+				<p>Use the <a href="https://projects.the-examples-book.com/companies/">Companies</a> tab to view all projects by company</p>
+				<p>Use the <a href="https://projects.the-examples-book.com/projects/search">Search</a> tab to search for projects by domain, keywords, and meeting time</p>
+				<br>
+				<p><b>Click on individual projects to view more information including project descriptions from corporate partners</b></p>
 			</div>
 		</div>
-		<div class="row container-fluid justify-content-center">
+		<div class="col-6" id="main">
+			<div id="directions" style='border-style: solid; padding: 10px;'>
+				<h3>Directions</h1>
+				<p>Use the <a href="https://projects.the-examples-book.com/companies/">Companies</a> tab to view all projects by company</p>
+				<p>Use the <a href="https://projects.the-examples-book.com/projects/search">Search</a> tab to search for projects by domain, keywords, and meeting time</p>
+				<br>
+				<p><b>Click on individual projects to view more information including project descriptions from corporate partners</b></p>
+			</div>
 			{% for project in page_obj %}
-			<div class = 'col-5 justify-content-center'>
+			<div class="row justify-content-center">
 				<div class="col-6">
 					<div class="card mb-3">
 						<div class="card-body">
@@ -28,50 +64,51 @@
 							<li class="list-group-item"><b>Keywords:</b> {{ project.keywords.all|join:", " }}</li>
 							<li class="list-group-item"><b>Tools:</b> {{ project.tools.all|join:", " }}</li>
 							<li class="list-group-item"><b>Citizenship:</b> {{ project.citizenship_status }}</li>
-						  </ul>
+						</ul>
 						<div class="card-body">
 							<h6 class="card-text">Summary</h6>
 							<p class="card-text">{{ project.summary }}</p>
 						</div>
-							<div class="card-footer">
-								<div class="row">
-									<small class="text-muted col-sm-6 text-start">AY {{ project.year }} - {{ project.year|add:"1" }}</small>
-									<small class="text-muted col-sm-6 text-end">Last updated: {{ project.updated_at }}</small>
-								</div>
+						<div class="card-footer">
+							<div class="row">
+								<small class="text-muted col-sm-6 text-start">AY {{ project.year }} - {{ project.year|add:"1" }}</small>
+								<small class="text-muted col-sm-6 text-end">Last updated: {{ project.updated_at }}</small>
 							</div>
-					</div>
+						</div>
 					</div>
 				</div>
-				{% empty %}
-				<h2>No projects found</h2>
 			</div>
-			{% endfor %}
-			<nav>
-				<ul class="pagination justify-content-center">
-					{% if page_obj.has_previous %}
-					<li class="page-item">
-						<a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-					</li>
-					{% else %}
-					<li class="page-item disabled">
-						<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-					</li>
-					{% endif %}
-			
-					<li class="page-item"><a class="page-link" href="#">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</a></li>
-			
-					{% if page_obj.has_next %}
-					<li class="page-item">
-						<a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-					</li>
-					{% else %}
-					<li class="page-item disabled">
-						<a class="page-link" tabindex="-1" aria-disabled="true" href="#">Next</a>
-					</li>
-					{% endif %}
-				</ul>
-			</nav>
+		{% empty %}
+		<h2>No projects found</h2>
+		{% endfor %}
 		</div>
 	</div>
 </div>
+
+<nav>
+	<ul class="pagination justify-content-center">
+		{% if page_obj.has_previous %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+		</li>
+		{% else %}
+		<li class="page-item disabled">
+			<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+		</li>
+		{% endif %}
+
+		<li class="page-item"><a class="page-link" href="#">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</a></li>
+
+		{% if page_obj.has_next %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+		</li>
+		{% else %}
+		<li class="page-item disabled">
+			<a class="page-link" tabindex="-1" aria-disabled="true" href="#">Next</a>
+		</li>
+		{% endif %}
+	</ul>
+</nav>
+
 {% endblock content %}
