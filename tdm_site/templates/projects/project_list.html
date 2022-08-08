@@ -58,8 +58,8 @@
 							<a href="{{ project.get_absolute_url }}" class="text-decoration-none"><h5 class="card-title">{{ project.company }} - {{ project.title }}</h5></a>
 						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"><b>Lecture time:</b> {{ project.lecturetimes.all|join:", " }}</li>
-							<li class="list-group-item"><b>Lab time:</b> {{ project.labtimes.all|join:", " }}</li>
+							<li class="list-group-item"><b>Lecture time:</b> {{ project.lecturetimes.all|join:", " }} <b>ET</b></li>
+							<li class="list-group-item"><b>Lab time:</b> {{ project.labtimes.all|join:", " }} <b>ET</b></li>
 							<li class="list-group-item"><b>Domain:</b> {{ project.domain }}</li>
 							<li class="list-group-item"><b>Keywords:</b> {{ project.keywords.all|join:", " }}</li>
 							<li class="list-group-item"><b>Tools:</b> {{ project.tools.all|join:", " }}</li>
