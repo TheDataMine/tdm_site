@@ -3,7 +3,6 @@ from django.db.models import CharField, TextField, IntegerField, ForeignKey, Man
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
-from traitlets import default
 
 
 class Project(models.Model):
