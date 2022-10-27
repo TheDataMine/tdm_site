@@ -3,6 +3,7 @@ from django.db.models import CharField, TextField, IntegerField, ForeignKey, Man
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
+from traitlets import default
 
 
 class Project(models.Model):
@@ -32,6 +33,8 @@ class Project(models.Model):
     citizenship_status = ForeignKey("CitizenshipStatus", verbose_name=_("citizenship status"), on_delete=models.CASCADE)
 
     restricted = BooleanField(default=False)
+
+    reg_status = BooleanField(default=False)
 
 
     def get_absolute_url(self):
