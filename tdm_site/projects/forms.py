@@ -18,4 +18,4 @@ class SearchProjectsForm(forms.Form):
     citizenship_status = forms.ModelChoiceField(queryset=CitizenshipStatus.objects.all(), required=False, widget=forms.Select(attrs={"class": "form-control"}))
     lab_times = forms.ModelMultipleChoiceField(queryset=Labtime.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
     lecture_times = forms.ModelMultipleChoiceField(queryset=Lecturetime.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
-    reg_status = forms.BooleanField(choices=get_choices, required=False, widget=forms.Select(attrs={"class": "form-control"}))
+    reg_status = forms.BooleanField(required=False, widget=forms.RadioSelect())
