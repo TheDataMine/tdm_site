@@ -41,7 +41,7 @@ def project_search_result_view(request):
     year = request.GET.get('year')
     domain = request.GET.get('domain')
     citizenship_status = request.GET.get('citizenship_status')
-    reg_status = request.Get.get('reg_status')
+    reg_status = request.GET.get('reg_status')
 
     keywords = request.GET.getlist('keywords')
     tools = request.GET.getlist('tools')
