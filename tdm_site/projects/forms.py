@@ -13,7 +13,7 @@ def get_choices():
 class SearchProjectsForm(forms.Form):
     class Meta:
         labels = {"reg_status": ("Registration Status")}
-        
+
     year = forms.ChoiceField(choices=get_choices, required=False, widget=forms.Select(attrs={"class": "form-control"}))
     domain = forms.ModelChoiceField(queryset=Domain.objects.all(), required=False, widget=forms.Select(attrs={"class": "form-control"}))
     keywords = forms.ModelMultipleChoiceField(queryset=Keyword.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
@@ -21,4 +21,4 @@ class SearchProjectsForm(forms.Form):
     citizenship_status = forms.ModelChoiceField(queryset=CitizenshipStatus.objects.all(), required=False, widget=forms.Select(attrs={"class": "form-control"}))
     lab_times = forms.ModelMultipleChoiceField(queryset=Labtime.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
     lecture_times = forms.ModelMultipleChoiceField(queryset=Lecturetime.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
-    reg_status = forms.BooleanField(required=False, widget=forms.RadioSelect(choices=(True, False)))
+    reg_status = forms.BooleanField(required=False, widget=forms.RadioSelect(choices=((True, "Yes"), (False, "No"),)))
