@@ -56,7 +56,7 @@
 					<div class="card mb-3">
 						<div class="card-body">
 							<a href="{{ project.get_absolute_url }}" class="text-decoration-none"><h5 class="card-title">{{ project.company }} - {{ project.title }}</h5></a>
-							{% if project.reg_status %}
+							{% if project.registration_status %}
 							<span class="badge rounded-pill bg-success">Open for Registration</span>
 							{% else %}
 							<span class="badge rounded-pill bg-danger">Closed for Registration</span>
