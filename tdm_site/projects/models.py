@@ -33,7 +33,7 @@ class Project(models.Model):
 
     restricted = BooleanField(default=False)
 
-    reg_status = BooleanField(default=False, verbose_name=_("Registration Status"))
+    registration_status = BooleanField(default=False, verbose_name=_("Registration Status"))
 
 
     def get_absolute_url(self):
