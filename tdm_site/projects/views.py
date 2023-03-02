@@ -42,6 +42,7 @@ def project_search_result_view(request):
     domain = request.GET.get('domain')
     citizenship_status = request.GET.get('citizenship_status')
     registration_status = request.GET.get('registration_status')
+    deafpods_bool = request.Get.get('deafpods_bool')
 
     keywords = request.GET.getlist('keywords')
     tools = request.GET.getlist('tools')
@@ -58,7 +59,10 @@ def project_search_result_view(request):
         queryset = queryset.filter(citizenship_status=citizenship_status)
 
     if registration_status not in ['', None]:
-        queryset = queryset.filter(registration_status=registration_status)    
+        queryset = queryset.filter(registration_status=registration_status)
+
+    if deafpods_bool not in ['', None]:
+        queryset = queryset.filter(deafpods_bool=deafpods_bool)   
 
     if keywords:
         queryset = queryset.filter(keywords__in=keywords)

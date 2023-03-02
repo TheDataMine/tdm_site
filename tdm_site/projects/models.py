@@ -35,6 +35,9 @@ class Project(models.Model):
 
     registration_status = BooleanField(default=False, verbose_name=_("Registration Status"))
 
+    deafpods_bool = BooleanField(default=False, verbose_name=_("DEAFPODS"))
+
+
 
     def get_absolute_url(self):
         """Get url for company's detail view.

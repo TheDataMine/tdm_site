@@ -61,6 +61,9 @@
 							{% else %}
 							<span class="badge rounded-pill bg-danger">Closed for Registration</span>
 							{% endif %}
+							{% if object.deafpods_bool %}
+							<span class="badge rounded-pill badge badge-info">DEAFPODS Students Only</span>
+							{% endif %}
 						</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item"><b>Lecture time:</b> {{ project.lecturetimes.all|join:", " }} <b>ET</b></li>
