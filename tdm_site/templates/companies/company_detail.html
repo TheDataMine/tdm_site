@@ -10,13 +10,6 @@
     <div class="col-sm-12">
 
       <h2>{{ object.name }}</h2>
-          <div id="directions" style='border-style: solid; padding: 10px;'>
-            <h3>Directions</h1>
-            <p>Use the <a href="https://projects.the-examples-book.com/companies/">Companies</a> tab to view all projects by company</p>
-            <p>Use the <a href="https://projects.the-examples-book.com/projects/search">Search</a> tab to search for projects by domain, keywords, and meeting time</p>
-            <br>
-            <p><b>Click on individual projects to view more information including project descriptions from corporate partners</b></p>
-          </div>
           {% for project in object.project_set.all %}
           <div class="row justify-content-center">
             <div class="col-6">
