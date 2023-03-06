@@ -7,9 +7,9 @@
 
 {% for year,projects in year_list %}
 <div>{{ year }}</div>
-{% for project in projects %}
+{% for project in projects|dictsort:"company" %}
 <ul>
-    <li>{{ project.company }}</li>
+    <li><a href="{{ project.company.get_absolute_url }}">{{ project.company }}</a></li>
 </ul>
 {% endfor %}
 {% endfor %}
