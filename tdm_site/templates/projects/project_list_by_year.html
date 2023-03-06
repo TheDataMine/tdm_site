@@ -9,7 +9,7 @@
 <div>{{ year }}</div>
 {% for project in projects %}
 <ul>
-    <li><a href="{{ project.company.get_absolute_url }}">{{ project.company }}</a></li>
+    <li><a href="{{ project.company.get_absolute_url }}?year={{ year }}">{{ project.company }}</a></li>
 </ul>
 {% endfor %}
 {% endfor %}
