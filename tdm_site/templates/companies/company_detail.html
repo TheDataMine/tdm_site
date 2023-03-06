@@ -10,12 +10,52 @@
     <div class="col-sm-12">
 
       <h2>{{ object.name }}</h2>
-      <ul>
-        {% for project in object.project_set.all %}
-          <li><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></li>
+          <div id="directions" style='border-style: solid; padding: 10px;'>
+            <h3>Directions</h1>
+            <p>Use the <a href="https://projects.the-examples-book.com/companies/">Companies</a> tab to view all projects by company</p>
+            <p>Use the <a href="https://projects.the-examples-book.com/projects/search">Search</a> tab to search for projects by domain, keywords, and meeting time</p>
+            <br>
+            <p><b>Click on individual projects to view more information including project descriptions from corporate partners</b></p>
+          </div>
+          {% for project in object.project_set.all %}
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <a href="{{ project.get_absolute_url }}" class="text-decoration-none"><h5 class="card-title">{{ project.company }} - {{ project.title }}</h5></a>
+                  {% if project.registration_status %}
+                  <span class="badge rounded-pill bg-success">Open for Registration</span>
+                  {% else %}
+                  <span class="badge rounded-pill bg-danger">Closed for Registration</span>
+                  {% endif %}
+                  {% if project.deafpods_bool %}
+                  <span class="badge rounded-pill bg-info">DEAFPODS Students Only</span>
+                  {% endif %}
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Lecture time:</b> {{ project.lecturetimes.all|join:", " }} <b>ET</b></li>
+                  <li class="list-group-item"><b>Lab time:</b> {{ project.labtimes.all|join:", " }} <b>ET</b></li>
+                  <li class="list-group-item"><b>Domain:</b> {{ project.domain }}</li>
+                  <li class="list-group-item"><b>Keywords:</b> {{ project.keywords.all|join:", " }}</li>
+                  <li class="list-group-item"><b>Tools:</b> {{ project.tools.all|join:", " }}</li>
+                  <li class="list-group-item"><b>Citizenship:</b> {{ project.citizenship_status }}</li>
+                </ul>
+                <div class="card-body">
+                  <h6 class="card-text">Summary</h6>
+                  <p class="card-text">{{ project.summary }}</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <small class="text-muted col-sm-6 text-start">AY {{ project.year }} - {{ project.year|add:"1" }}</small>
+                    <small class="text-muted col-sm-6 text-end">Last updated: {{ project.updated_at }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+        <h2>No projects found</h2>
         {% endfor %}
-      </ul>
-
     </div>
   </div>
 
