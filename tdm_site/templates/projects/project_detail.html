@@ -10,6 +10,14 @@
 	<div class="card mb-3">
 		<div class="card-body">
 			<a href="{{ object.get_absolute_url }}" class="text-decoration-none"><h5 class="card-title">{{ object.company }} - {{ object.title }}</h5></a>
+            {% if object.registration_status %}
+            <span class="badge rounded-pill bg-success">Open for Registration</span>
+            {% else %}
+            <span class="badge rounded-pill bg-danger">Closed for Registration</span>
+            {% endif %}
+            {% if object.deafpods_bool %}
+            <span class="badge rounded-pill badge badge-info">DEAFPODS Students Only</span>
+            {% endif %}
 		</div>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item"><b>Lecture time:</b> {{ object.lecturetimes.all|join:", " }} <b>ET</b></li>
