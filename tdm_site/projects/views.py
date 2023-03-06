@@ -5,6 +5,8 @@ from django.views.generic import DetailView, RedirectView, UpdateView, ListView,
 from rest_framework.views import APIView
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.core.exceptions import ImproperlyConfigured
+from django.db.models import Count
 
 from tdm_site.projects.models import Project
 
@@ -34,6 +36,16 @@ class ProjectListByYearView(ListView):
     
     model = Project
     template_name = "projects/project_list_by_year.html"
+    
+    def get_queryset(self):
+        """
+        Return the list of items for this view.
+        The return value must be an iterable and may be an instance of
+        `QuerySet` in which case `QuerySet` specific behavior will be enabled.
+        """
+        qs = super(ProjectListByYearView, self).get_queryset()
+        qs.objects.order_by('year').distinct('year', 'company')
+        return qs
 
 project_list_by_year_view = ProjectListByYearView.as_view()
 
