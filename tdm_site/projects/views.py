@@ -30,6 +30,14 @@ class ProjectListView(ListView):
 project_list_view = ProjectListView.as_view()
 
 
+class ProjectListByYearView(ListView):
+    
+    model = Project
+    template_name = "projects/project_list_by_year.html"
+
+project_list_by_year_view = ProjectListByYearView.as_view()
+
+
 class ProjectSearchView(FormView):
     form_class = SearchProjectsForm
     template_name = "projects/project_search.html"
