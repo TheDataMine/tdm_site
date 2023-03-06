@@ -5,11 +5,11 @@
 
     {% regroup project_list by year as year_list %}
 
-    {% for project in year_list %}
-        <div>{{ project.grouper }}</div>
-        {% for p in project.list %}
+    {% for year,projects in year_list %}
+        <div>{{ year }}</div>
+        {% for project in projects %}
             <ul>
-                <li> <a href="{{ project.get_absolute_url }}">{{ p.title }}</a></li>
+                <li> <a href="{{ project.get_absolute_url }}">{{ project.title }}</a></li>
             </ul>
         {% endfor %}
         {% empty %}
