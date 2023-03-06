@@ -62,7 +62,7 @@ def project_search_result_view(request):
     domain = request.GET.get('domain')
     citizenship_status = request.GET.get('citizenship_status')
     registration_status = request.GET.get('registration_status')
-    deafpods_bool = request.Get.get('deafpods_bool')
+    deafpods_bool = request.GET.get('deafpods_bool')
 
     keywords = request.GET.getlist('keywords')
     tools = request.GET.getlist('tools')
