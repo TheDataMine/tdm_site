@@ -23,7 +23,7 @@ class CompanyDetailView(DetailView):
         qs = super(CompanyDetailView, self).get_queryset()
         
         # Get projects for this company
-        projects = Project.objects.filter(company=self.object)
+        projects = Project.objects.filter(company=self.get_object())
         
         if yr := self.request.GET.get('year'):
             projects = projects.filter(year=yr)
