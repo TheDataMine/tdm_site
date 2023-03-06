@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    {% regroup project_list by year as year_list %}
+    {% regroup project_list|dictsort:"year" by year as year_list %}
 
     {% for year,projects in year_list %}
         <div>{{ year }}</div>
