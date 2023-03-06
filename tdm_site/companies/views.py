@@ -28,7 +28,7 @@ class CompanyDetailView(DetailView):
         if yr := self.request.GET.get('year'):
             projects = projects.filter(year=yr)
             
-        return projects.order_by('year', 'company__name').distinct('year', 'company__name')
+        return projects
 
 
 company_detail_view = CompanyDetailView.as_view()
