@@ -44,8 +44,7 @@ class ProjectListByYearView(ListView):
         `QuerySet` in which case `QuerySet` specific behavior will be enabled.
         """
         qs = super(ProjectListByYearView, self).get_queryset()
-        qs.objects.order_by('year').distinct('year', 'company')
-        return qs
+        return qs.order_by('year').distinct('year', 'company')
 
 project_list_by_year_view = ProjectListByYearView.as_view()
 
