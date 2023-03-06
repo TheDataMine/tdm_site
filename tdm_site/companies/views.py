@@ -14,16 +14,16 @@ class CompanyDetailView(DetailView):
     slug_field = "slug"
     slug_url_kwarg = "slug"
     
-    def get_queryset(self):
+    def get_object(self):
         """
         Return the list of items for this view.
         The return value must be an iterable and may be an instance of
         `QuerySet` in which case `QuerySet` specific behavior will be enabled.
         """
-        qs = super(CompanyDetailView, self).get_queryset()
+        company = super(CompanyDetailView, self).get_object()
         
         # Get projects for this company
-        projects = Project.objects.filter(company=self.get_object())
+        projects = Project.objects.filter(company__name=company.name)
         
         if yr := self.request.GET.get('year'):
             projects = projects.filter(year=yr)
