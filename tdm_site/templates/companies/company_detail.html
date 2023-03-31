@@ -9,7 +9,7 @@
 <div class="container">
   {% for project in object %}
   <ul>
-    <li><a href="{{ project.company.get_absolute_url }}?year={{ year }}">{{ project.company }}- {{ project.title }}</a></li>
+    <li><a href="{{ project.company.get_absolute_url }}">{{ project.company }}- {{ project.title }}</a></li>
   </ul>
   {% endfor %}
 
