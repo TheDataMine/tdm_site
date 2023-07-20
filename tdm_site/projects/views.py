@@ -81,7 +81,7 @@ def project_search_result_view(request):
         queryset = queryset.filter(registration_status=registration_status)
 
     if deafpods_bool not in ['', None]:
-        queryset = queryset.filter(deafpods_bool=deafpods_bool)   
+        queryset = queryset.filter(deafpods_bool=deafpods_bool)
 
     if keywords:
         queryset = queryset.filter(keywords__in=keywords)
