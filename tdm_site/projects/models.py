@@ -36,6 +36,9 @@ class Project(models.Model):
     registration_status = BooleanField(default=False, verbose_name=_("Registration Status"))
 
     deafpods_bool = BooleanField(default=False, verbose_name=_("DEAFPODS"))
+    ndmn_bool = BooleanField(default=False, verbose_name=_("NDMN"))
+    indy_bool = BooleanField(default=False, verbose_name=_("INDY"))
+    wl_bool = BooleanField(default=False, verbose_name=_("WL"))
 
 
 
