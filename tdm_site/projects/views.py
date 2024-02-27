@@ -62,11 +62,17 @@ def project_search_result_view(request):
     citizenship_status = request.GET.get('citizenship_status')
     registration_status = request.GET.get('registration_status')
     deafpods_bool = request.GET.get('deafpods_bool')
+    ndmn_bool = request.GET.get('ndmn_bool')
+    indy_bool = request.GET.get('indy_bool')
+    #wl_bool = request.GET.get('wl_bool')
 
     keywords = request.GET.getlist('keywords')
     tools = request.GET.getlist('tools')
     lab_times = request.GET.getlist('lab_times')
     lecture_times = request.GET.getlist('lecture_times')
+
+    print(f"{domain=}")
+    print(f"{citizenship_status=}")
 
     if year not in ['', None]:
         queryset = queryset.filter(year=year)
@@ -82,6 +88,15 @@ def project_search_result_view(request):
 
     if deafpods_bool not in ['', None]:
         queryset = queryset.filter(deafpods_bool=deafpods_bool)
+
+    if indy_bool not in ['', None]:
+        queryset = queryset.filter(indy_bool=indy_bool)
+
+    #if wl_bool not in ['', None]:
+    #    queryset = queryset.filter(wl_bool=wl_bool)
+
+    if ndmn_bool not in ['', None]:
+        queryset = queryset.filter(ndmn_bool=ndmn_bool)
 
     if keywords:
         queryset = queryset.filter(keywords__in=keywords)

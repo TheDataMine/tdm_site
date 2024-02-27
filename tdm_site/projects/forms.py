@@ -22,4 +22,6 @@ class SearchProjectsForm(forms.Form):
     lab_times = forms.ModelMultipleChoiceField(queryset=Labtime.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
     lecture_times = forms.ModelMultipleChoiceField(queryset=Lecturetime.objects.all(), required=False, widget=forms.SelectMultiple(attrs={"class": "form-control"}))
     registration_status = forms.BooleanField(required=False, widget=forms.RadioSelect(choices=((True, "Open for Registration"), (False, "Closed for Registration"),)))
-    deafpods_bool = forms.BooleanField(required=False, widget=forms.RadioSelect(choices=((True, "Include DEAFPODS projects"), (False, "Exclude DEAFPODS projects"),)))
+    deafpods_bool = forms.BooleanField(required=False, label="DEAFPODS", widget=forms.RadioSelect(choices=((True, "Include DEAFPODS projects"), (False, "Exclude DEAFPODS projects"),)))
+    indy_bool = forms.BooleanField(required=False, label="INDY", widget=forms.RadioSelect(choices=((True, "Include INDY projects"), (False, "Exclude INDY projects"),)))
+    ndmn_bool = forms.BooleanField(required=False, label="NDMN", widget=forms.RadioSelect(choices=((True, "Include NDMN projects"), (False, "Exclude NDMN projects"),)))

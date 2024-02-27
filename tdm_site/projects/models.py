@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 
+from datetime import datetime
+
 
 class Project(models.Model):
     """
@@ -20,7 +22,7 @@ class Project(models.Model):
     slug = CharField(_('slug'), max_length=100, unique=True)
     summary = TextField(_('summary'), max_length=280)
     description = TextField(_('description'), max_length=1000)
-    year = IntegerField(_('year'), blank=False)
+    year = IntegerField(_('year'), default=datetime.now().year, blank=False)
 
     labtimes = ManyToManyField("classtimes.Labtime", verbose_name=_("labtimes"))
     lecturetimes = ManyToManyField("classtimes.Lecturetime", verbose_name=_("lecturetimes"))

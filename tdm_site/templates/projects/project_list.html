@@ -65,6 +65,12 @@
 							{% if project.deafpods_bool %}
 							<span class="badge rounded-pill bg-info">DEAFPODS Students Only</span>
 							{% endif %}
+							{% if project.indy_bool %}
+							<span class="badge rounded-pill bg-warning">INDY</span>
+							{% endif %}
+							{% if project.ndmn_bool %}
+							<span class="badge rounded-pill bg-info">NDMN/IDM</span>
+							{% endif %}
 						</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item"><b>Lecture time:</b> {{ project.lecturetimes.all|join:", " }} <b>ET</b></li>
