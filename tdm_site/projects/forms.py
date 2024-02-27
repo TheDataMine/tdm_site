@@ -8,7 +8,8 @@ from tdm_site.tools.models import Tool
 from tdm_site.classtimes.models import Labtime, Lecturetime
 
 def get_choices():
-    return list(zip(list(Project.objects.order_by().values_list("year", flat=True).distinct()), [int(v) for v in Project.objects.order_by().values_list("year", flat=True).distinct()]))
+    return list(zip([''] + [v for v in Project.objects.values_list("year", flat=True).distinct().order_by('-year')], [''] + [v for v in Project.objects.values_list("year", flat=True).distinct().order_by('-year')]))
+    #return list(zip(list(Project.objects.order_by().values_list("year", flat=True).distinct()), [int(v) for v in Project.objects.order_by().values_list("year", flat=True).distinct()]))
 
 class SearchProjectsForm(forms.Form):
     class Meta:

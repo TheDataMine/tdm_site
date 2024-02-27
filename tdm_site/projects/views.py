@@ -71,9 +71,6 @@ def project_search_result_view(request):
     lab_times = request.GET.getlist('lab_times')
     lecture_times = request.GET.getlist('lecture_times')
 
-    print(f"{domain=}")
-    print(f"{citizenship_status=}")
-
     if year not in ['', None]:
         queryset = queryset.filter(year=year)
 
