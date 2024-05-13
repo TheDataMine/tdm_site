@@ -26,3 +26,4 @@ class SearchProjectsForm(forms.Form):
     deafpods_bool = forms.BooleanField(required=False, label="DEAFPODS", widget=forms.RadioSelect(choices=((True, "Include DEAFPODS projects"), (False, "Exclude DEAFPODS projects"),)))
     indy_bool = forms.BooleanField(required=False, label="INDY", widget=forms.RadioSelect(choices=((True, "Include INDY projects"), (False, "Exclude INDY projects"),)))
     ndmn_bool = forms.BooleanField(required=False, label="NDMN", widget=forms.RadioSelect(choices=((True, "Include NDMN projects"), (False, "Exclude NDMN projects"),)))
+    online_bool = forms.BooleanField(required=False, label="NDMN", widget=forms.RadioSelect(choices=((True, "Include ONLINE projects"), (False, "Exclude ONLINE projects"), )))

@@ -68,8 +68,13 @@
 							{% if project.indy_bool %}
 							<span class="badge rounded-pill bg-warning">INDY</span>
 							{% endif %}
+
 							{% if project.ndmn_bool %}
 							<span class="badge rounded-pill bg-info">NDMN/IDM</span>
+							{% endif %}
+
+							{% if project.online_bool %}
+							<span class="badge rounded-pill bg-primary">ONLINE</span>
 							{% endif %}
 						</div>
 						<ul class="list-group list-group-flush">

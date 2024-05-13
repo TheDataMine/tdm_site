@@ -41,6 +41,7 @@ class Project(models.Model):
     ndmn_bool = BooleanField(default=False, verbose_name=_("NDMN"))
     indy_bool = BooleanField(default=False, verbose_name=_("INDY"))
     wl_bool = BooleanField(default=False, verbose_name=_("WL"))
+    online_bool = BooleanField(default=False, verbose_name=_("ONLINE"))
 
 
 

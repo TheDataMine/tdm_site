@@ -64,6 +64,7 @@ def project_search_result_view(request):
     deafpods_bool = request.GET.get('deafpods_bool')
     ndmn_bool = request.GET.get('ndmn_bool')
     indy_bool = request.GET.get('indy_bool')
+    online_bool = request.GET.get('online_bool')
     #wl_bool = request.GET.get('wl_bool')
 
     keywords = request.GET.getlist('keywords')
@@ -94,6 +95,9 @@ def project_search_result_view(request):
 
     if ndmn_bool not in ['', None]:
         queryset = queryset.filter(ndmn_bool=ndmn_bool)
+
+    if online_bool not in ['', None]:
+        queryset = queryset.filter(online_bool=online_bool)
 
     if keywords:
         queryset = queryset.filter(keywords__in=keywords)
