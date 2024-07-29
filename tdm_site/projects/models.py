@@ -42,6 +42,7 @@ class Project(models.Model):
     indy_bool = BooleanField(default=False, verbose_name=_("INDY"))
     wl_bool = BooleanField(default=False, verbose_name=_("WL"))
     online_bool = BooleanField(default=False, verbose_name=_("ONLINE"))
+    rockies_bool = BooleanField(default=False, verbose_name=_("ROCKIES"))
 
 
 

@@ -65,6 +65,7 @@ def project_search_result_view(request):
     ndmn_bool = request.GET.get('ndmn_bool')
     indy_bool = request.GET.get('indy_bool')
     online_bool = request.GET.get('online_bool')
+    rockies_bool = request.GET.get('rockies_bool')
     #wl_bool = request.GET.get('wl_bool')
 
     keywords = request.GET.getlist('keywords')
@@ -89,6 +90,9 @@ def project_search_result_view(request):
 
     if indy_bool not in ['', None]:
         queryset = queryset.filter(indy_bool=indy_bool)
+
+    if rockies_bool not in ['', None]:
+        queryset = queryset.filter(rockies_bool=rockies_bool)
 
     #if wl_bool not in ['', None]:
     #    queryset = queryset.filter(wl_bool=wl_bool)
